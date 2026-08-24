@@ -7,7 +7,26 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-<style>body{font-family:Inter,sans-serif;background:#0f172a;color:#fff}.glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}</style>
+<style>
+  body{font-family:Inter,sans-serif;background:#0f172a;color:#fff}
+  .glass{background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
+  
+  /* Custom Pulse & Glow Animations for Buttons */
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+  .pulse-btn {
+    animation: pulseGlow 2.5s infinite;
+  }
+  .hover-scale {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+</style>
 </head>
 <body class="pb-20">
 
@@ -15,24 +34,24 @@
 <div class="max-w-6xl mx-auto px-4 h-[90px] flex justify-between items-center">
 <img src="logo.jpg" alt="AFRIKA TOURS AND TRAVEL" class="h-[75px] w-auto max-w-[240px] object-contain rounded">
 <div class="text-right">
-<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="bg-emerald-600 text-white px-5 py-2.5 rounded-full text-xs font-bold block shadow-md hover:bg-emerald-700 transition">Book WhatsApp</a>
+<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="bg-emerald-600 text-white px-5 py-2.5 rounded-full text-xs font-bold block shadow-md pulse-btn hover-scale">Book WhatsApp</a>
 <span class="text-[9px] text-slate-500 font-semibold mt-1 block">⚡ Avg reply: &lt; 5 mins</span>
 </div>
 </div>
 </header>
 
-<div class="bg-emerald-500 text-black text-center py-3 font-black text-[11px]">✅ FLAT DAY RATE 08:00-18:00 • VEHICLE + DRIVER + 200KM + TOLLS + UNLIMITED WAITING</div>
+<div class="bg-gradient-to-r from-amber-500 via-emerald-500 to-amber-500 text-black text-center py-3 font-black text-[11px] shadow-md">✅ FLAT DAY RATE 08:00-18:00 • VEHICLE + DRIVER + 200KM + TOLLS + UNLIMITED WAITING</div>
 
 <main class="max-w-[640px] mx-auto px-4">
 
 <div class="text-center py-8">
-<span class="bg-white/10 text-emerald-300 border border-emerald-500/20 px-4 py-1.5 rounded-full text-[11px] font-bold">CAPE TOWN'S PRIVATE DRIVER SERVICE</span>
+<span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-4 py-1.5 rounded-full text-[11px] font-bold">CAPE TOWN'S PRIVATE DRIVER SERVICE</span>
 <h1 class="text-[30px] font-black leading-[1.1] mt-4">Your Car + Driver <br><span class="text-emerald-400">For The Whole Day</span></h1>
 <p class="text-slate-400 text-[13px] mt-3">08:00 to 18:00 - Go anywhere. Stop anywhere. We wait. Tolls, parking, 200km included.</p>
 <div class="grid grid-cols-3 gap-2 mt-5 text-center">
-<div class="glass rounded-xl py-3"><p class="font-black text-emerald-400">200KM</p><p class="text-[10px] text-slate-400">Included</p></div>
-<div class="glass rounded-xl py-3"><p class="font-black text-emerald-400">08-18H</p><p class="text-[10px] text-slate-400">Waiting Free</p></div>
-<div class="glass rounded-xl py-3"><p class="font-black text-emerald-400">TOLLS</p><p class="text-[10px] text-slate-400">Included</p></div>
+<div class="glass rounded-xl py-3 border-t-2 border-emerald-400"><p class="font-black text-emerald-400">200KM</p><p class="text-[10px] text-slate-400">Included</p></div>
+<div class="glass rounded-xl py-3 border-t-2 border-amber-400"><p class="font-black text-amber-400">08-18H</p><p class="text-[10px] text-slate-400">Waiting Free</p></div>
+<div class="glass rounded-xl py-3 border-t-2 border-emerald-400"><p class="font-black text-emerald-400">TOLLS</p><p class="text-[10px] text-slate-400">Included</p></div>
 </div>
 </div>
 
@@ -41,16 +60,16 @@
 
 <div class="grid gap-6 mt-5">
 <!-- Sedan (Max 3) -->
-<div class="bg-white text-black rounded-[22px] overflow-hidden shadow-xl">
+<div class="bg-white text-black rounded-[22px] overflow-hidden shadow-xl border-2 border-amber-400/30">
 <img src="sedan.jpg" alt="Sedan Max 3" class="w-full h-[210px] object-cover">
-<div class="flex justify-between items-center px-4 py-2.5 bg-slate-900"><span class="text-[11px] font-bold text-emerald-400">MOST POPULAR • SEDAN</span><span class="bg-white/20 text-white text-[10px] px-2.5 py-1 rounded-full font-bold">MAX 3</span></div>
+<div class="flex justify-between items-center px-4 py-2.5 bg-slate-900"><span class="text-[11px] font-bold text-emerald-400">MOST POPULAR • SEDAN</span><span class="bg-amber-400 text-slate-900 text-[10px] px-2.5 py-1 rounded-full font-black">MAX 3</span></div>
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R2,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center">
 <div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div>
-<b class="text-[15px]">R2,660</b>
+<b class="text-[15px] text-amber-600">R2,660</b>
 </div>
-<a href="https://wa.me/27837327440?text=Book%20Sedan%20MAX%203" class="mt-4 block bg-black text-white text-center py-3.5 rounded-full font-bold hover:bg-slate-800 transition">Book Sedan via WhatsApp →</a>
+<a href="https://wa.me/27837327440?text=Book%20Sedan%20MAX%203" class="mt-4 block bg-emerald-600 text-white text-center py-3.5 rounded-full font-bold pulse-btn hover-scale">Book Sedan via WhatsApp →</a>
 </div>
 </div>
 
@@ -62,9 +81,9 @@
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R3,500</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center">
 <div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div>
-<b class="text-[15px]">R3,325</b>
+<b class="text-[15px] text-amber-600">R3,325</b>
 </div>
-<a href="https://wa.me/27837327440?text=Book%20SUV%20MAX%204" class="mt-4 block bg-black text-white text-center py-3.5 rounded-full font-bold hover:bg-slate-800 transition">Book SUV via WhatsApp →</a>
+<a href="https://wa.me/27837327440?text=Book%20SUV%20MAX%204" class="mt-4 block bg-emerald-600 text-white text-center py-3.5 rounded-full font-bold pulse-btn hover-scale">Book SUV via WhatsApp →</a>
 </div>
 </div>
 
@@ -76,9 +95,9 @@
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R4,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center">
 <div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div>
-<b class="text-[15px]">R4,560</b>
+<b class="text-[15px] text-amber-600">R4,560</b>
 </div>
-<a href="https://wa.me/27837327440?text=Book%20Minibus%20MAX%2013" class="mt-4 block bg-black text-white text-center py-3.5 rounded-full font-bold hover:bg-slate-800 transition">Book Minibus via WhatsApp →</a>
+<a href="https://wa.me/27837327440?text=Book%20Minibus%20MAX%2013" class="mt-4 block bg-emerald-600 text-white text-center py-3.5 rounded-full font-bold pulse-btn hover-scale">Book Minibus via WhatsApp →</a>
 </div>
 </div>
 </div>
@@ -86,16 +105,16 @@
 <div class="mt-10 bg-white text-black rounded-[20px] p-5">
 <h3 class="font-black text-[16px]">What's Included</h3>
 <div class="grid grid-cols-2 gap-2 mt-3 text-[12px]"><p>✅ Vehicle + Driver</p><p>✅ 200km/day</p><p>✅ All tolls</p><p>✅ Parking</p><p>✅ Unlimited waiting 08-18</p><p>✅ Fuel for 200km</p></div>
-<div class="mt-3 bg-slate-100 rounded-xl p-3 text-[11px]"><b>Extra:</b> R8/km after 200km • R150/hr after 18:00</div>
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px]"><b>Extra:</b> R8/km after 200km • R150/hr after 18:00</div>
 </div>
 
 <h2 class="text-[24px] font-black text-center mt-12">Popular Routes</h2>
 <p class="text-slate-400 text-[13px] text-center">Same flat rate - unlimited stops</p>
 <div class="mt-4 grid gap-3">
-<div class="bg-white text-black rounded-[16px] p-4"><b class="text-[14px]">📍 Cape Peninsula Loop</b><p class="text-[12px] text-slate-500">Sea Point → Chapman's Peak → Cape Point → Boulders Beach • 180km covered</p></div>
-<div class="bg-white text-black rounded-[16px] p-4"><b class="text-[14px]">🍷 Winelands Route</b><p class="text-[12px] text-slate-500">Stellenbosch → Franschhoek → Paarl • 160km covered</p></div>
-<div class="bg-white text-black rounded-[16px] p-4"><b class="text-[14px]">🏙️ City + Table Mountain</b><p class="text-[12px] text-slate-500">Bo-Kaap → Table Mtn → V&A → Camps Bay • 90km</p></div>
-<div class="bg-white text-black rounded-[16px] p-4"><b class="text-[14px]">✈️ Airport = Full Day Rate</b><p class="text-[12px] text-slate-500">We keep car whole day. Same price, no extra fee.</p></div>
+<div class="bg-white text-black rounded-[16px] p-4 border-l-4 border-amber-500"><b class="text-[14px]">📍 Cape Peninsula Loop</b><p class="text-[12px] text-slate-500">Sea Point → Chapman's Peak → Cape Point → Boulders Beach • 180km covered</p></div>
+<div class="bg-white text-black rounded-[16px] p-4 border-l-4 border-emerald-500"><b class="text-[14px]">🍷 Winelands Route</b><p class="text-[12px] text-slate-500">Stellenbosch → Franschhoek → Paarl • 160km covered</p></div>
+<div class="bg-white text-black rounded-[16px] p-4 border-l-4 border-amber-500"><b class="text-[14px]">🏙️ City + Table Mountain</b><p class="text-[12px] text-slate-500">Bo-Kaap → Table Mtn → V&A → Camps Bay • 90km</p></div>
+<div class="bg-white text-black rounded-[16px] p-4 border-l-4 border-emerald-500"><b class="text-[14px]">✈️ Airport = Full Day Rate</b><p class="text-[12px] text-slate-500">We keep car whole day. Same price, no extra fee.</p></div>
 </div>
 
 <h2 class="text-[24px] font-black text-center mt-12">Gallery</h2>
@@ -121,14 +140,14 @@
 <div class="bg-white text-black rounded-xl p-4"><p class="text-[13px]">"R2,800 for whole day with car and driver? Steal!"</p><p class="text-[11px] font-bold mt-2">— David, USA ⭐⭐⭐⭐⭐</p></div>
 </div>
 
-<div class="mt-12 bg-emerald-600 rounded-[20px] p-6 text-center text-black">
-<h2 class="text-[22px] font-black">Ready to Book?</h2><p class="text-[13px] mt-1">WhatsApp us - 50% deposit secures date</p>
-<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="mt-4 inline-block bg-black text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-800 transition">WhatsApp +27 83 732 7440</a>
+<div class="mt-12 bg-gradient-to-r from-emerald-600 to-emerald-500 rounded-[20px] p-6 text-center text-black shadow-xl">
+<h2 class="text-[22px] font-black text-white">Ready to Book?</h2><p class="text-[13px] mt-1 text-emerald-100">WhatsApp us - 50% deposit secures date</p>
+<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="mt-4 inline-block bg-black text-white px-8 py-3.5 rounded-full font-bold pulse-btn hover-scale">WhatsApp +27 83 732 7440</a>
 </div>
 
 </main>
 
-<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="fixed bottom-5 right-5 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center text-white text-[28px] shadow-xl z-50"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="fixed bottom-5 right-5 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center text-white text-[28px] shadow-2xl z-50 pulse-btn"><i class="fa-brands fa-whatsapp"></i></a>
 <footer class="mt-10 py-8 text-center text-slate-500 text-[11px] border-t border-white/10">© 2026 AFRIKA TOURS • MAX = Maximum Passengers • Cape Town</footer>
 </body>
 </html>
