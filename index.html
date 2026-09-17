@@ -119,14 +119,14 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 </div>
 </div>
 
-<!-- DEDICATED BOOKING FORM MODAL -->
+<!-- DEDICATED BOOKING FORM MODAL FOR LOCAL TRIPS -->
 <div id="bookingFormSection" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
 <div class="bg-white text-black rounded-[22px] p-5 shadow-2xl border-2 border-emerald-500/30 w-full max-w-[540px] my-auto">
 <div class="flex justify-between items-center">
-<h3 class="font-black text-[18px]">Complete Your Booking</h3>
+<h3 class="font-black text-[18px]">Complete Your Local Booking</h3>
 <button type="button" onclick="closeBookingForm()" class="text-slate-500 text-[20px] font-bold hover:text-black">✕</button>
 </div>
-<p class="text-[11px] text-slate-500 mt-1">You selected: <b id="selectedTripType" class="text-emerald-600">-</b> • Fill details to pay or WhatsApp</p>
+<p class="text-[11px] text-slate-500 mt-1">You selected: <b id="selectedTripType" class="text-emerald-600">-</b></p>
 
 <form id="privateTripForm" class="mt-5 grid gap-4">
 <input type="hidden" id="tripCategory" value="">
@@ -142,6 +142,17 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <div>
 <label class="text-[11px] font-bold text-slate-700">To (Destination) *</label>
 <input required id="to" type="text" placeholder="e.g. V&A Waterfront" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="text-[11px] font-bold text-slate-700">Pickup Date *</label>
+<input required id="tripDate" type="date" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+<div>
+<label class="text-[11px] font-bold text-slate-700">Pickup Time *</label>
+<input required id="tripTime" type="time" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
 </div>
 </div>
 
@@ -188,7 +199,7 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 </div>
 
 <div class="grid grid-cols-1 gap-2">
-<button type="button" onclick="payNow()" class="block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale text-[13px]">Pay Securely via Card (Payfast) →</button>
+<button type="button" onclick="payNowLocal()" class="block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale text-[13px]">Pay Securely via Card (Payfast) →</button>
 <button type="submit" class="block w-full bg-emerald-600 text-white text-center py-3.5 rounded-full font-bold pulse-btn hover-scale text-[13px] flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Book via WhatsApp</button>
 </div>
 <p class="text-[10px] text-slate-400 text-center">Beyond 40km? Book our Day Rate from R2,800 — includes 200km + waiting.</p>
@@ -212,35 +223,98 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <h2 class="text-[26px] font-black text-center mt-6">Day Rental Fleet</h2>
 <p class="text-center text-slate-400 text-[13px]">MAX = Maximum Passengers Allowed</p>
 <div class="grid gap-6 mt-5">
+
+<!-- SEDAN -->
 <div class="bg-white text-black rounded-[22px] overflow-hidden shadow-xl border-2 border-amber-400/30">
 <img src="sedan.jpg" alt="Sedan Max 3" class="w-full h-[210px] object-cover">
 <div class="flex justify-between items-center px-4 py-2.5 bg-slate-900"><span class="text-[11px] font-bold text-emerald-400">MOST POPULAR • SEDAN</span><span class="bg-amber-400 text-slate-900 text-[10px] px-2.5 py-1 rounded-full font-black">MAX 3</span></div>
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R2,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R2,660</b></div>
-<a href="https://www.payfast.co.za/eng/process?..." class="mt-4 block bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale">Pay Securely via Card (Payfast) →</a>
-<a href="https://wa.me/27837327440?text=Book%20Sedan%20MAX%203" class="mt-2 block bg-emerald-600 text-white text-center py-3 rounded-full font-bold pulse-btn hover-scale text-sm flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Book & Chat via WhatsApp</a>
+<button type="button" onclick="openTourForm('Sedan (MAX 3)', 2800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
 </div>
+
+<!-- SUV -->
 <div class="bg-white text-black rounded-[22px] overflow-hidden shadow-xl">
 <img src="suv.jpg" alt="SUV Max 4" class="w-full h-[210px] object-cover">
 <div class="flex justify-between items-center px-4 py-2.5 bg-slate-900"><span class="text-[11px] font-bold text-slate-400">EXTRA SPACE • SUV</span><span class="bg-white/20 text-white text-[10px] px-2.5 py-1 rounded-full font-bold">MAX 4</span></div>
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R3,500</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R3,325</b></div>
-<a href="https://www.payfast.co.za/eng/process?..." class="mt-4 block bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale">Pay Securely via Card (Payfast) →</a>
-<a href="https://wa.me/27837327440?text=Book%20SUV%20MAX%204" class="mt-2 block bg-emerald-600 text-white text-center py-3 rounded-full font-bold pulse-btn hover-scale text-sm flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Book & Chat via WhatsApp</a>
+<button type="button" onclick="openTourForm('SUV (MAX 4)', 3500)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
 </div>
+
+<!-- MINIBUS -->
 <div class="bg-white text-black rounded-[22px] overflow-hidden shadow-xl">
 <img src="minibus.jpg" alt="Minibus Max 13" class="w-full h-[210px] object-cover">
 <div class="flex justify-between items-center px-4 py-2.5 bg-slate-900"><span class="text-[11px] font-bold text-slate-400">GROUPS 10-13 • MINIBUS</span><span class="bg-emerald-500 text-white text-[10px] px-2.5 py-1 rounded-full font-bold">MAX 13</span></div>
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R4,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R4,560</b></div>
-<a href="https://www.payfast.co.za/eng/process?..." class="mt-4 block bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale">Pay Securely via Card (Payfast) →</a>
-<a href="https://wa.me/27837327440?text=Book%20Minibus%20MAX%2013" class="mt-2 block bg-emerald-600 text-white text-center py-3 rounded-full font-bold pulse-btn hover-scale text-sm flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Book & Chat via WhatsApp</a>
+<button type="button" onclick="openTourForm('Minibus (MAX 13)', 4800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
+</div>
+
+</div>
+
+<!-- DEDICATED TOUR / FLEET BOOKING MODAL -->
+<div id="tourFormSection" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+<div class="bg-white text-black rounded-[22px] p-5 shadow-2xl border-2 border-amber-500/30 w-full max-w-[540px] my-auto">
+<div class="flex justify-between items-center">
+<h3 class="font-black text-[18px]">Book Day Rental Tour</h3>
+<button type="button" onclick="closeTourForm()" class="text-slate-500 text-[20px] font-bold hover:text-black">✕</button>
+</div>
+<p class="text-[11px] text-slate-500 mt-1">Vehicle: <b id="selectedTourVehicle" class="text-amber-600">-</b> (<span id="selectedTourPrice">R0</span>/day)</p>
+
+<form id="tourBookingForm" class="mt-4 grid gap-3">
+<input type="hidden" id="tourVehicleName" value="">
+<input type="hidden" id="tourBasePrice" value="">
+
+<div>
+<label class="text-[11px] font-bold text-slate-700">Tour Date *</label>
+<input required id="tourDate" type="date" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+
+<div>
+<label class="text-[11px] font-bold text-slate-700">Pickup Location / Hotel / Airport *</label>
+<input required id="tourPickup" type="text" placeholder="e.g. The Silo Hotel, V&A Waterfront" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+
+<div>
+<label class="text-[11px] font-bold text-slate-700">Preferred Route / Itinerary *</label>
+<select required id="tourRoute" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+<option value="">Select Route</option>
+<option value="Cape Peninsula Loop (Includes Bakoven secret cove & Cape Point)">Cape Peninsula Loop</option>
+<option value="Winelands Route (Stellenbosch, Franschhoek & Paarl)">Winelands Route</option>
+<option value="Penguins & Coastline Explorer (Muizenberg, Simon's Town, Kalk Bay)">Penguins & Coastline Explorer</option>
+<option value="Hermanus Whale Coast Route">Hermanus Whale Coast Route</option>
+<option value="Custom Itinerary (Discuss with driver)">Custom Itinerary</option>
+</select>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="text-[11px] font-bold text-slate-700">Number of Passengers *</label>
+<input required id="tourPassengers" type="number" min="1" max="13" placeholder="e.g. 3" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+<div>
+<label class="text-[11px] font-bold text-slate-700">Your WhatsApp No *</label>
+<input required id="tourWano" type="tel" placeholder="+27 82 123 4567" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+</div>
+</div>
+
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center mt-1">
+<div><span class="text-[11px] font-bold text-slate-700">Upfront Online Payment:</span><p class="text-[10px] text-slate-500">Includes 5% discount</p></div>
+<div class="text-right"><p id="tourDiscountPrice" class="text-[16px] font-black text-amber-600">R0</p></div>
+</div>
+
+<div class="grid grid-cols-1 gap-2 mt-2">
+<button type="button" onclick="payNowTour()" class="block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale text-[13px]">Pay Securely via Card (Payfast) →</button>
+<button type="submit" class="block w-full bg-emerald-600 text-white text-center py-3.5 rounded-full font-bold pulse-btn hover-scale text-[13px] flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-lg"></i> Book &amp; Chat via WhatsApp</button>
+</div>
+</form>
 </div>
 </div>
 
@@ -327,6 +401,8 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 
 <script>
 let currentRate = 0;
+
+// Local Trip Modal Functions
 function openBookingForm(type){
  document.getElementById('bookingFormSection').classList.remove('hidden');
  document.getElementById('tripCategory').value = type;
@@ -339,6 +415,19 @@ function openBookingForm(type){
 }
 function closeBookingForm(){
  document.getElementById('bookingFormSection').classList.add('hidden');
+}
+
+// Tour Fleet Modal Functions
+function openTourForm(vehicleName, basePrice){
+ document.getElementById('tourFormSection').classList.remove('hidden');
+ document.getElementById('tourVehicleName').value = vehicleName;
+ document.getElementById('tourBasePrice').value = basePrice;
+ document.getElementById('selectedTourVehicle').innerText = vehicleName;
+ document.getElementById('selectedTourPrice').innerText = 'R' + basePrice.toLocaleString();
+ document.getElementById('tourDiscountPrice').innerText = 'R' + (basePrice * 0.95).toLocaleString() + ' (5% off)';
+}
+function closeTourForm(){
+ document.getElementById('tourFormSection').classList.add('hidden');
 }
 
 // GPS Location Finder Function for Clients
@@ -375,7 +464,8 @@ function calculatePrice(){
  document.getElementById('estimatedTotal').innerText = 'R'+total.toFixed(0);
  document.getElementById('discountTotal').innerText = 'Pay now: R'+(total*0.95).toFixed(0)+' (5% off)';
 }
-function payNow(){
+
+function payNowLocal(){
  const type = document.getElementById('tripCategory').value;
  let link = 'https://www.payfast.co.za/eng/process?m_payment_id=PRIVATE_LOCAL';
  if(type==='short') link='https://www.payfast.co.za/eng/process?m_payment_id=SHORT_TRIP';
@@ -383,10 +473,20 @@ function payNow(){
  if(type==='airport') link='https://www.payfast.co.za/eng/process?m_payment_id=AIRPORT_40KM';
  window.open(link,'_blank');
 }
+
+function payNowTour(){
+ const veh = document.getElementById('tourVehicleName').value;
+ let link = 'https://www.payfast.co.za/eng/process?m_payment_id=TOUR_RENTAL';
+ window.open(link,'_blank');
+}
+
+// Local Trip Form Submit
 document.getElementById('privateTripForm').addEventListener('submit', function(e){
  e.preventDefault();
  const from = document.getElementById('from').value.trim();
  const to = document.getElementById('to').value.trim();
+ const tripDate = document.getElementById('tripDate').value.trim();
+ const tripTime = document.getElementById('tripTime').value.trim();
  const dist = document.getElementById('distance').value.trim() || 'Not specified (calculate via addresses/GPS)';
  const passengers = document.getElementById('passengers').value.trim();
  const wano = document.getElementById('wano').value.trim();
@@ -400,6 +500,7 @@ document.getElementById('privateTripForm').addEventListener('submit', function(e
 
  const msg = `*NEW PRIVATE LOCAL TRIP REQUEST*%0A%0A`+
  `🗂️ *Type:* ${encodeURIComponent(tripCat)}%0A`+
+ `📅 *Date & Time:* ${encodeURIComponent(tripDate)} at ${encodeURIComponent(tripTime)}%0A`+
  `📍 *From:* ${encodeURIComponent(from)}%0A`+
  `📍 *To:* ${encodeURIComponent(to)}%0A`+
  `📏 *Distance:* ${encodeURIComponent(dist)}%0A`+
@@ -408,6 +509,30 @@ document.getElementById('privateTripForm').addEventListener('submit', function(e
  `📱 *Client WhatsApp:* ${encodeURIComponent(wano)}%0A`+
  `⚧️ *Gender:* ${encodeURIComponent(gender)}%0A%0A`+
  `*Requirements:* Pet ${hasPet}, Disabled ${isDisabled}, Pregnant ${isPregnant}, Luggage ${hasLuggage}%0A%0A`+
+ `Sent from Afrika Tours website`;
+
+ const url = `https://wa.me/27837327440?text=${msg}`;
+ window.open(url, '_blank');
+});
+
+// Tour Fleet Form Submit
+document.getElementById('tourBookingForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ const vehicle = document.getElementById('tourVehicleName').value;
+ const basePrice = document.getElementById('tourBasePrice').value;
+ const tourDate = document.getElementById('tourDate').value.trim();
+ const pickup = document.getElementById('tourPickup').value.trim();
+ const route = document.getElementById('tourRoute').value;
+ const passengers = document.getElementById('tourPassengers').value.trim();
+ const wano = document.getElementById('tourWano').value.trim();
+
+ const msg = `*NEW DAY RENTAL TOUR BOOKING*%0A%0A`+
+ `🚗 *Vehicle:* ${encodeURIComponent(vehicle)} (R${basePrice}/day)%0A`+
+ `📅 *Tour Date:* ${encodeURIComponent(tourDate)} (08:00 - 18:00)%0A`+
+ `📍 *Pickup Location:* ${encodeURIComponent(pickup)}%0A`+
+ `🗺️ *Route Preference:* ${encodeURIComponent(route)}%0A`+
+ `👥 *Passengers:* ${encodeURIComponent(passengers)}%0A`+
+ `📱 *Client WhatsApp:* ${encodeURIComponent(wano)}%0A%0A`+
  `Sent from Afrika Tours website`;
 
  const url = `https://wa.me/27837327440?text=${msg}`;
