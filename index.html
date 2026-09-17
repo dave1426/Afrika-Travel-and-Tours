@@ -41,9 +41,24 @@
 <div class="bg-gradient-to-r from-amber-500 via-emerald-500 to-amber-500 text-black text-center py-3 font-black text-[11px] shadow-md">FLAT DAY RATE 08:00-18:00 • VEHICLE + DRIVER + 200KM + UNLIMITED WAITING</div>
 <main class="max-w-[640px] mx-auto px-4">
 
-<div class="text-center py-8">
+<!-- CATCHY TOP TITLE & PURPOSE BANNER -->
+<div class="text-center pt-8 pb-6 border-b border-slate-800 mb-6">
+<div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider mb-3">
+<i class="fa-solid fa-compass text-amber-400"></i> Cape Town Premier Transport
+</div>
+<h1 class="text-[34px] sm:text-[38px] font-black tracking-tight leading-[1.05]">
+Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400">&amp; Travel</span>
+</h1>
+<div class="flex flex-wrap justify-center gap-2 mt-3 text-[11px] font-bold text-slate-300">
+<span class="bg-slate-800 px-3 py-1 rounded-md border border-slate-700">🚙 Local Trips</span>
+<span class="bg-slate-800 px-3 py-1 rounded-md border border-slate-700">🏙️ City Trips</span>
+<span class="bg-slate-800 px-3 py-1 rounded-md border border-slate-700">🌍 Guided Tours</span>
+</div>
+</div>
+
+<div class="text-center py-4">
 <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 px-4 py-1.5 rounded-full text-[11px] font-bold">CAPE TOWN'S PRIVATE DRIVER SERVICE</span>
-<h1 class="text-[30px] font-black leading-[1.1] mt-4">Your Car + Driver <br><span class="text-emerald-400">For The Whole Day</span></h1>
+<h2 class="text-[30px] font-black leading-[1.1] mt-4">Your Car + Driver <br><span class="text-emerald-400">For The Whole Day</span></h2>
 <p class="text-slate-400 text-[13px] mt-3">08:00 to 18:00 - Go anywhere. Stop anywhere. We wait. Parking, 200km included.</p>
 <div class="grid grid-cols-2 gap-3 mt-5 text-center">
 <div class="glass rounded-xl py-3 border-t-2 border-emerald-400"><p class="font-black text-emerald-400">200KM</p><p class="text-[10px] text-slate-400">Included</p></div>
@@ -94,12 +109,14 @@
 </div>
 
 </div>
+</div>
 
-<!-- HIDDEN FORM - SHOWS ON BOOK TRIP CLICK -->
-<div id="bookingFormSection" class="hidden mt-8 bg-white text-black rounded-[22px] p-5 shadow-2xl border-2 border-emerald-500/30">
+<!-- DEDICATED BOOKING FORM MODAL (SEPARATE FROM CARDS) -->
+<div id="bookingFormSection" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+<div class="bg-white text-black rounded-[22px] p-5 shadow-2xl border-2 border-emerald-500/30 w-full max-w-[540px] my-auto">
 <div class="flex justify-between items-center">
 <h3 class="font-black text-[18px]">Complete Your Booking</h3>
-<button onclick="closeBookingForm()" class="text-slate-500 text-[20px]">✕</button>
+<button onclick="closeBookingForm()" class="text-slate-500 text-[20px] font-bold hover:text-black">✕</button>
 </div>
 <p class="text-[11px] text-slate-500 mt-1">You selected: <b id="selectedTripType" class="text-emerald-600">-</b> • Fill details to pay or WhatsApp</p>
 
@@ -228,7 +245,6 @@ function openBookingForm(type){
  if(type==='airport'){ currentRate=9; label='Airport Transfer up to 40km - R9/km + R50 wait'; }
  document.getElementById('selectedTripType').innerText = label;
  calculatePrice();
- document.getElementById('bookingFormSection').scrollIntoView({behavior:'smooth'});
 }
 function closeBookingForm(){
  document.getElementById('bookingFormSection').classList.add('hidden');
