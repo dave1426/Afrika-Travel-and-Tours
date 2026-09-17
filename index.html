@@ -220,9 +220,9 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 </div>
 </div>
 
-<!-- POPULAR TOUR ROUTES (MOVED ABOVE FLEET CARDS) -->
+<!-- POPULAR TOUR ROUTES -->
 <h2 class="text-[24px] font-black text-center mt-6">Popular Tour Routes</h2>
-<p class="text-slate-400 text-[13px] text-center">Select a route to pre-fill your fleet booking</p>
+<p class="text-slate-400 text-[13px] text-center">Select a route &amp; choose your preferred fleet vehicle</p>
 <div class="mt-4 grid gap-3">
 <div class="bg-white text-black rounded-[16px] p-4 border-l-4 border-amber-500 shadow-md">
   <b class="text-[14px] block">📍 Cape Peninsula Loop</b>
@@ -257,7 +257,7 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R2,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R2,660</b></div>
-<button type="button" onclick="openTourForm('Sedan (MAX 3)', 2800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
+<button type="button" onclick="openTourFormSpecific('Sedan (MAX 3)', 2800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
 </div>
 
@@ -268,7 +268,7 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R3,500</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R3,325</b></div>
-<button type="button" onclick="openTourForm('SUV (MAX 4)', 3500)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
+<button type="button" onclick="openTourFormSpecific('SUV (MAX 4)', 3500)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
 </div>
 
@@ -279,7 +279,7 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <div class="p-5">
 <div class="flex justify-between items-end"><div><p class="text-[32px] font-black leading-none">R4,800</p><p class="text-[11px] text-slate-500">per day 08:00-18:00</p></div><span class="text-slate-500 text-[13px]">/day</span></div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center"><div><span class="text-[12px] block font-medium">Save 5% pay upfront</span><span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5"><i class="fa-solid fa-lock text-emerald-600"></i> Secure Payfast / Cards</span></div><b class="text-[15px] text-amber-600">R4,560</b></div>
-<button type="button" onclick="openTourForm('Minibus (MAX 13)', 4800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
+<button type="button" onclick="openTourFormSpecific('Minibus (MAX 13)', 4800)" class="mt-4 block w-full bg-amber-500 text-slate-900 text-center py-3.5 rounded-full font-black hover-scale cursor-pointer">Book This Fleet Vehicle →</button>
 </div>
 </div>
 
@@ -292,11 +292,18 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 <h3 class="font-black text-[18px]">Book Day Rental Tour</h3>
 <button type="button" onclick="closeTourForm()" class="text-slate-500 text-[20px] font-bold hover:text-black">✕</button>
 </div>
-<p class="text-[11px] text-slate-500 mt-1">Vehicle: <b id="selectedTourVehicle" class="text-amber-600">-</b> (<span id="selectedTourPrice">R0</span>/day)</p>
+<p class="text-[11px] text-slate-500 mt-1">Select your preferred vehicle &amp; route below:</p>
 
 <form id="tourBookingForm" class="mt-4 grid gap-3">
-<input type="hidden" id="tourVehicleName" value="">
-<input type="hidden" id="tourBasePrice" value="">
+<div>
+<label class="text-[11px] font-bold text-slate-700">Choose Fleet Vehicle *</label>
+<select required id="tourVehicleSelect" onchange="updateTourPricing()" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black font-bold">
+<option value="Sedan (MAX 3)" data-price="2800">Sedan (MAX 3) — R2,800/day</option>
+<option value="SUV (MAX 4)" data-price="3500">SUV (MAX 4) — R3,500/day</option>
+<option value="Minibus (MAX 13)" data-price="4800">Minibus (MAX 13) — R4,800/day</option>
+</select>
+<p class="text-[10px] text-amber-600 font-bold mt-1">Selected Price: <span id="selectedTourPrice">R2,800</span>/day</p>
+</div>
 
 <div>
 <label class="text-[11px] font-bold text-slate-700">Tour Date *</label>
@@ -333,7 +340,7 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 
 <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex justify-between items-center mt-1">
 <div><span class="text-[11px] font-bold text-slate-700">Upfront Online Payment:</span><p class="text-[10px] text-slate-500">Includes 5% discount</p></div>
-<div class="text-right"><p id="tourDiscountPrice" class="text-[16px] font-black text-amber-600">R0</p></div>
+<div class="text-right"><p id="tourDiscountPrice" class="text-[16px] font-black text-amber-600">R2,660</p></div>
 </div>
 
 <div class="grid grid-cols-1 gap-2 mt-2">
@@ -413,7 +420,6 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 </div>
 
 </main>
-<a href="https://wa.me/27837327440?text=Hi%20Afrika%20Tours%20I%20want%20to%20book" class="fixed bottom-5 right-5 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center text-white text-[28px] shadow-2xl z-50 pulse-btn"><i class="fa-brands fa-whatsapp"></i></a>
 <footer class="mt-10 py-8 text-center text-slate-500 text-[11px] border-t border-white/10">© 2026 AFRIKA TOURS • MAX = Maximum Passengers • Cape Town</footer>
 
 <script>
@@ -435,26 +441,34 @@ function closeBookingForm(){
 }
 
 // Tour Fleet Modal Functions
-function openTourForm(vehicleName, basePrice){
+function openTourFormSpecific(vehicleName, basePrice){
  document.getElementById('tourFormSection').classList.remove('hidden');
- document.getElementById('tourVehicleName').value = vehicleName;
- document.getElementById('tourBasePrice').value = basePrice;
- document.getElementById('selectedTourVehicle').innerText = vehicleName;
+ const selectElem = document.getElementById('tourVehicleSelect');
+ for(let i=0; i<selectElem.options.length; i++){
+   if(selectElem.options[i].value === vehicleName){
+     selectElem.selectedIndex = i;
+     break;
+   }
+ }
+ updateTourPricing();
+}
+
+function updateTourPricing(){
+ const selectElem = document.getElementById('tourVehicleSelect');
+ const selectedOption = selectElem.options[selectElem.selectedIndex];
+ const basePrice = parseFloat(selectedOption.getAttribute('data-price'));
  document.getElementById('selectedTourPrice').innerText = 'R' + basePrice.toLocaleString();
  document.getElementById('tourDiscountPrice').innerText = 'R' + (basePrice * 0.95).toLocaleString() + ' (5% off)';
 }
+
 function closeTourForm(){
  document.getElementById('tourFormSection').classList.add('hidden');
 }
 
 // Select route from tour/gallery cards and jump to fleet section
 function selectRouteAndBook(routeName){
-  // Scroll down smoothly to fleet section
   document.getElementById('fleetSection').scrollIntoView({ behavior: 'smooth' });
-  // Pre-select the route in the dropdown if the tour modal is opened later, or we can open the Sedan modal by default preloaded
-  // Let's open the Sedan tour modal with this route pre-selected
-  openTourForm('Sedan (MAX 3)', 2800);
-  // Set dropdown value
+  openTourFormSpecific('Sedan (MAX 3)', 2800);
   setTimeout(() => {
     document.getElementById('tourRoute').value = routeName;
   }, 200);
@@ -505,7 +519,9 @@ function payNowLocal(){
 }
 
 function payNowTour(){
- let link = 'https://www.payfast.co.za/eng/process?m_payment_id=TOUR_RENTAL';
+ const selectElem = document.getElementById('tourVehicleSelect');
+ const vehicle = selectElem.value;
+ let link = 'https://www.payfast.co.za/eng/process?m_payment_id=TOUR_RENTAL_' + encodeURIComponent(vehicle);
  window.open(link,'_blank');
 }
 
@@ -547,8 +563,9 @@ document.getElementById('privateTripForm').addEventListener('submit', function(e
 // Tour Fleet Form Submit
 document.getElementById('tourBookingForm').addEventListener('submit', function(e){
  e.preventDefault();
- const vehicle = document.getElementById('tourVehicleName').value;
- const basePrice = document.getElementById('tourBasePrice').value;
+ const selectElem = document.getElementById('tourVehicleSelect');
+ const vehicle = selectElem.value;
+ const basePrice = selectElem.options[selectElem.selectedIndex].getAttribute('data-price');
  const tourDate = document.getElementById('tourDate').value.trim();
  const pickup = document.getElementById('tourPickup').value.trim();
  const route = document.getElementById('tourRoute').value;
