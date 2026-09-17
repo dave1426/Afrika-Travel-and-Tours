@@ -115,19 +115,25 @@ Afrika Tours <span class="text-transparent bg-clip-text bg-gradient-to-r from-em
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <div>
-<label class="text-[11px] font-bold text-slate-700">From *</label>
-<input required id="from" type="text" placeholder="e.g. Sea Point" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+<div class="flex justify-between items-center">
+<label class="text-[11px] font-bold text-slate-700">From (Pickup) *</label>
+<button type="button" onclick="getGPSLocation()" class="text-[10px] text-emerald-600 font-black hover:underline flex items-center gap-1"><i class="fa-solid fa-location-crosshairs"></i> Pin My Location</button>
+</div>
+<input required id="from" type="text" placeholder="e.g. Sea Point or use pin" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
 </div>
 <div>
-<label class="text-[11px] font-bold text-slate-700">To *</label>
+<label class="text-[11px] font-bold text-slate-700">To (Destination) *</label>
 <input required id="to" type="text" placeholder="e.g. V&A Waterfront" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
 </div>
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <div>
-<label class="text-[11px] font-bold text-slate-700">Estimated Distance (km) *</label>
-<input required id="distance" type="number" min="1" max="40" placeholder="e.g. 12" oninput="calculatePrice()" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
+<div class="flex justify-between items-center">
+<label class="text-[11px] font-bold text-slate-700">Estimated Distance (km)</label>
+<span class="text-[9px] text-amber-600 font-bold">Optional</span>
+</div>
+<input id="distance" type="number" min="1" max="40" placeholder="e.g. 12 (Leave blank if unsure)" oninput="calculatePrice()" class="w-full mt-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-[13px] text-black">
 </div>
 <div>
 <label class="text-[11px] font-bold text-slate-700">Number of Passengers *</label>
@@ -316,6 +322,29 @@ function openBookingForm(type){
 function closeBookingForm(){
  document.getElementById('bookingFormSection').classList.add('hidden');
 }
+
+// GPS Location Finder Function for Clients
+function getGPSLocation(){
+  if(navigator.geolocation){
+    const fromInput = document.getElementById('from');
+    fromInput.value = "📍 Detecting your GPS location...";
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        fromInput.value = `📍 GPS Pin: https://maps.google.com/?q=${lat},${lon}`;
+      },
+      function(error) {
+        alert("Unable to retrieve your location. Please enter your street address manually.");
+        fromInput.value = "";
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  } else {
+    alert("Geolocation is not supported by your browser.");
+  }
+}
+
 function calculatePrice(){
  const dist = parseFloat(document.getElementById('distance').value) || 0;
  const type = document.getElementById('tripCategory').value;
@@ -340,13 +369,13 @@ document.getElementById('privateTripForm').addEventListener('submit', function(e
  e.preventDefault();
  const from = document.getElementById('from').value.trim();
  const to = document.getElementById('to').value.trim();
- const dist = document.getElementById('distance').value.trim();
+ const dist = document.getElementById('distance').value.trim() || 'Not specified (calculate via addresses/GPS)';
  const passengers = document.getElementById('passengers').value.trim();
  const wano = document.getElementById('wano').value.trim();
  const gender = document.getElementById('gender').value;
  const tripCat = document.getElementById('tripCategory').value;
- const total = document.getElementById('estimatedTotal').innerText;
- const hasPet = document.getElementById('hasPet').checked? 'Yes' : 'No';
+ const total = document.getElementById('priceBox').classList.contains('hidden') ? 'To be calculated' : document.getElementById('estimatedTotal').innerText;
+ const hasPet = document.getElementById('hasPet'].checked? 'Yes' : 'No';
  const isDisabled = document.getElementById('isDisabled').checked? 'Yes' : 'No';
  const isPregnant = document.getElementById('isPregnant').checked? 'Yes' : 'No';
  const hasLuggage = document.getElementById('hasLuggage').checked? 'Yes' : 'No';
@@ -355,7 +384,7 @@ document.getElementById('privateTripForm').addEventListener('submit', function(e
  `🗂️ *Type:* ${encodeURIComponent(tripCat)}%0A`+
  `📍 *From:* ${encodeURIComponent(from)}%0A`+
  `📍 *To:* ${encodeURIComponent(to)}%0A`+
- `📏 *Distance:* ${encodeURIComponent(dist)}km%0A`+
+ `📏 *Distance:* ${encodeURIComponent(dist)}%0A`+
  `💰 *Est. Total:* ${encodeURIComponent(total)}%0A`+
  `👥 *Passengers:* ${encodeURIComponent(passengers)}%0A`+
  `📱 *Client WhatsApp:* ${encodeURIComponent(wano)}%0A`+
